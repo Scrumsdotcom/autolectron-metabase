@@ -11,8 +11,5 @@ ENV MB_DB_HOST=mysql
 # Expose port 3000
 EXPOSE 3000
 
-# Set the entrypoint
-ENTRYPOINT ["java", "-jar", "metabase.jar"]
-
-# Set the working directory
-WORKDIR /
+# Use the default entrypoint from the Metabase image
+ENTRYPOINT ["/app/metabase.jar"]
