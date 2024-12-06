@@ -1,0 +1,20 @@
+  metabase:
+    image: metabase/metabase:latest
+    restart: always
+    environment:
+      MB_DB_TYPE: mysql
+      MB_DB_DBNAME: production
+      MB_DB_PORT: 3306
+      MB_DB_USER: strapi
+      MB_DB_PASS: strapi
+      MB_DB_HOST: mysql
+    links:
+      - mysql:mysql
+    ports:
+      - 33062:3000
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+    expose:
+      - 33062
