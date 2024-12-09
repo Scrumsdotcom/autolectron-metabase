@@ -1,20 +1,24 @@
+version: "3.8"
+services:
   metabase:
     image: metabase/metabase:latest
     restart: always
     environment:
       MB_DB_TYPE: mysql
-      MB_DB_DBNAME: production
-      MB_DB_PORT: 3306
-      MB_DB_USER: strapi
-      MB_DB_PASS: strapi
-      MB_DB_HOST: mysql
-    links:
-      - mysql:mysql
+      MB_DB_DBNAME: production       # MySQL database name
+      MB_DB_PORT: 3306               # Internal MySQL container port
+      MB_DB_USER: strapi             # MySQL username
+      MB_DB_PASS: strapi             # MySQL password
+      MB_DB_HOST: host.docker.internal  # Use host.docker.internal for accessing host services
     ports:
-      - 33062:3000
+      - "33062:3000"                 # Expose Metabase to host on port 33062
     depends_on:
       - mysql
     networks:
       - app-network
-    expose:
-      - 33062
+
+  # Existing app services can remain as they are
+
+networks:
+  app-network:
+    external: true
