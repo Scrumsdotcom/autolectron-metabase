@@ -13,7 +13,7 @@ services:
     ports:
       - "33062:3000"                 # Expose Metabase to host on port 33062
     networks:
-      - app-network
+      - dokploy-network
 
   # Existing app services can remain as they are
 
