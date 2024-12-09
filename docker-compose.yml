@@ -12,8 +12,6 @@ services:
       MB_DB_HOST: host.docker.internal  # Use host.docker.internal for accessing host services
     ports:
       - "33062:3000"                 # Expose Metabase to host on port 33062
-    networks:
-      - dokploy-network
 
   # Existing app services can remain as they are
 
